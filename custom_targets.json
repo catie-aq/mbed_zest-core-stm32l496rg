@@ -1,0 +1,21 @@
+{
+    "ZEST_CORE_STM32L496RG": {
+        "inherits": [
+            "MCU_STM32L496xG"
+        ],
+        "extra_labels_add": [
+            "STM32L496RG"
+        ],
+        "config": {
+            "usb_speed": "USE_USB_OTG_FS"
+        },
+        "overrides": {
+            "clock_source": "USE_PLL_MSI",
+            "lpuart_clock_source": "USE_LPUART_CLK_LSE"
+        },
+        "device_has_add": [
+            "USBDEVICE"
+        ],
+        "device_name": "STM32L496RGTx"
+    }
+}
