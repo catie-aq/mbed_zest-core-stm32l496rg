@@ -3,9 +3,6 @@
         "inherits": [
             "MCU_STM32L496xG"
         ],
-        "extra_labels_add": [
-            "STM32L496RG"
-        ],
         "config": {
             "usb_speed": "USE_USB_OTG_FS"
         },
