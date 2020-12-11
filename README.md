@@ -1,5 +1,6 @@
 # Zest_Core_STM32L496RG
-Zest_Core_STM32L496RG custom target for Mbed OS.
+[Zest_Core_STM32L496RG](https://gitlab.com/catie_6tron/zest-core-stm32l496rg-hardware)
+custom target for Mbed OS.
 
 ## Usage
 In your project root directory:
