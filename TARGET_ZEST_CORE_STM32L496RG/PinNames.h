@@ -28,6 +28,8 @@
  *******************************************************************************
  */
 
+/* MBED TARGET LIST: ZEST_CORE_STM32L496RG */
+
 #ifndef MBED_PINNAMES_H
 #define MBED_PINNAMES_H
 
@@ -75,7 +77,6 @@ typedef enum {
     PA_14 = 0x0E,
     PA_15 = 0x0F,
     PA_15_ALT0 = PA_15 | ALT0,
-
     PB_0  = 0x10,
     PB_0_ALT0 = PB_0 | ALT0,
     PB_0_ALT1 = PB_0 | ALT1,
@@ -110,7 +111,6 @@ typedef enum {
     PB_15 = 0x1F,
     PB_15_ALT0 = PB_15 | ALT0,
     PB_15_ALT1 = PB_15 | ALT1,
-
     PC_0  = 0x20,
     PC_0_ALT0 = PC_0 | ALT0,
     PC_0_ALT1 = PC_0 | ALT1,
@@ -143,31 +143,30 @@ typedef enum {
     PC_13 = 0x2D,
     PC_14 = 0x2E,
     PC_15 = 0x2F,
-
     PD_2  = 0x32,
-
     PH_0  = 0x70,
     PH_1  = 0x71,
     PH_3  = 0x73,
 
-    // ADC internal channels
-    ADC_TEMP = 0xF0,
-    ADC_VREF = 0xF1,
-    ADC_VBAT = 0xF2,
+    /**** ADC internal channels ****/
+    
+    ADC_TEMP = 0xF0,  // Internal pin virtual value
+    ADC_VREF = 0xF1,  // Internal pin virtual value
+    ADC_VBAT = 0xF2,  // Internal pin virtual value
 
     // STDIO for console print
 #ifdef MBED_CONF_TARGET_STDIO_UART_TX
-    STDIO_UART_TX = MBED_CONF_TARGET_STDIO_UART_TX,
+    CONSOLE_TX = MBED_CONF_TARGET_STDIO_UART_TX,
 #else
-    STDIO_UART_TX = PC_10,
+    CONSOLE_TX = PC_10,
 #endif
 #ifdef MBED_CONF_TARGET_STDIO_UART_RX
-    STDIO_UART_RX = MBED_CONF_TARGET_STDIO_UART_RX,
+    CONSOLE_RX = MBED_CONF_TARGET_STDIO_UART_RX,
 #else
-    STDIO_UART_RX = PC_11,
+    CONSOLE_RX = PC_11,
 #endif
 
-    // Zest connector signal namings (J1)
+    /**** Zest connector signal namings (J1) ****/
     CAN1_RX     = PB_8,
     CAN1_TX     = PB_9,
     I2C1_SCL    = PC_0,
@@ -193,44 +192,15 @@ typedef enum {
     ADC_IN4     = PC_4,
     DAC_OUT1    = PA_4,
 
-    // On board signal namings
-    // USB signals
-    USB_DP      = PA_12,
-    USB_DM      = PA_11,
+    /**** USB FS pins ****/
+    USB_OTG_FS_DM = PA_11,
+    USB_OTG_FS_DP = PA_12,
 
-    // User I/Os
-    USER_LED    = PB_11,
-    USER_BUTTON = PH_3,
-
-    // Generic signals namings
-    LED1        = USER_LED,
-    LED2        = LED1,
-    LED3        = LED1,
-    LED4        = LED1,
-    BUTTON1     = USER_BUTTON,
-
-    // Standardized signal names
-    SERIAL_TX   = STDIO_UART_TX, // Virtual Com Port
-    SERIAL_RX   = STDIO_UART_RX, // Virtual Com Port
-    USBTX       = STDIO_UART_TX, // Virtual Com Port
-    USBRX       = STDIO_UART_RX, // Virtual Com Port
-    I2C_SCL     = I2C1_SCL,
-    I2C_SDA     = I2C1_SDA,
-    SPI_MOSI    = SPI1_MOSI,
-    SPI_MISO    = SPI1_MISO,
-    SPI_SCK     = SPI1_SCK,
-    SPI_CS      = SPI1_CS,
-    PWM_OUT     = PWM1_OUT,
-
-    // USB signal names
-    USB_OTG_FS_DM = USB_DM,
-    USB_OTG_FS_DP = USB_DP,
-
-    // Oscillator pins
+    /**** OSCILLATOR pins ****/
     RCC_OSC32_IN = PC_14,
     RCC_OSC32_OUT = PC_15,
 
-    // Debug pins
+    /**** DEBUG pins ****/
     SYS_JTCK_SWCLK = PA_14,
     SYS_JTDI = PA_15,
     SYS_JTDO_SWO = PB_3,
@@ -244,6 +214,10 @@ typedef enum {
     // Not connected
     NC = (int)0xFFFFFFFF
 } PinName;
+
+// Standardized LED and button names
+#define LED1    PB_11
+#define BUTTON1 PH_3
 
 #ifdef __cplusplus
 }
